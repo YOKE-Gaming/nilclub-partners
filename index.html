@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIL Club — Athlete-Powered Product Reviews for Brands</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0f;
+    --bg-alt:#111117;
+    --card:#15151d;
+    --card-border:#26262f;
+    --accent:#c8ff3d;
+    --accent-dim:#8fce1f;
+    --blue:#5b8cff;
+    --text:#f5f5f7;
+    --text-dim:#a3a3af;
+    --text-faint:#6f6f7c;
+    --radius:16px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.wordmark{font-family:'Space Grotesk', sans-serif;}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+
+  /* background texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(200,255,61,0.08), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(91,140,255,0.10), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,10,15,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--card-border);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 24px;
+  }
+  .wordmark{
+    font-weight:700; font-size:20px; letter-spacing:-0.02em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .wordmark .dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+    box-shadow:0 0 12px var(--accent);
+  }
+  .nav-cta{
+    background:var(--accent);
+    color:#0a0a0f;
+    font-weight:700;
+    font-size:14px;
+    padding:11px 22px;
+    border-radius:100px;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 0 0 rgba(200,255,61,0);
+  }
+  .nav-cta:hover{transform:translateY(-1px); box-shadow:0 6px 24px rgba(200,255,61,0.25);}
+
+  section{position:relative; z-index:1;}
+
+  /* HERO */
+  .hero{
+    padding:120px 24px 100px;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--accent);
+    background:rgba(200,255,61,0.08);
+    border:1px solid rgba(200,255,61,0.25);
+    padding:7px 16px; border-radius:100px;
+    margin-bottom:28px;
+  }
+  .hero h1{
+    font-size:clamp(36px, 6vw, 64px);
+    font-weight:700;
+    letter-spacing:-0.03em;
+    max-width:820px;
+    margin:0 auto 24px;
+  }
+  .hero h1 span{color:var(--accent);}
+  .hero p.sub{
+    font-size:19px;
+    color:var(--text-dim);
+    max-width:640px;
+    margin:0 auto 40px;
+  }
+  .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--accent); color:#0a0a0f; font-weight:700; font-size:15px;
+    padding:15px 30px; border-radius:100px; text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 30px rgba(200,255,61,0.25);}
+  .btn-secondary{
+    border:1px solid var(--card-border); color:var(--text); font-weight:600; font-size:15px;
+    padding:15px 30px; border-radius:100px; text-decoration:none;
+    background:rgba(255,255,255,0.02);
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .btn-secondary:hover{border-color:var(--text-dim); background:rgba(255,255,255,0.05);}
+
+  .example-tag{
+    margin-top:56px;
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:13px; color:var(--text-faint);
+    border-top:1px solid var(--card-border);
+    padding-top:20px;
+  }
+  .example-tag b{color:var(--text-dim); font-weight:600;}
+
+  /* SECTION HEADS */
+  .section-head{text-align:center; max-width:640px; margin:0 auto 64px;}
+  .section-label{
+    font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--blue); margin-bottom:14px; display:block;
+  }
+  .section-head h2{font-size:clamp(28px, 4vw, 40px); font-weight:700; letter-spacing:-0.02em; margin-bottom:16px;}
+  .section-head p{color:var(--text-dim); font-size:16px;}
+
+  /* PROCESS */
+  .process{padding:100px 24px;}
+  .steps{
+    max-width:820px; margin:0 auto;
+    display:flex; flex-direction:column; gap:0;
+  }
+  .step{
+    display:flex; gap:24px;
+    padding:28px 0;
+    border-top:1px solid var(--card-border);
+    position:relative;
+  }
+  .step:last-child{border-bottom:1px solid var(--card-border);}
+  .step-num{
+    flex:none;
+    width:44px; height:44px;
+    border-radius:12px;
+    background:var(--card);
+    border:1px solid var(--card-border);
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-size:15px;
+    color:var(--accent);
+  }
+  .step-body h3{font-size:17px; font-weight:600; margin-bottom:6px;}
+  .step-body p{color:var(--text-dim); font-size:15px;}
+  .step-tag{
+    display:inline-block; margin-top:10px;
+    font-size:12px; font-weight:600; color:var(--blue);
+    background:rgba(91,140,255,0.1); border:1px solid rgba(91,140,255,0.25);
+    padding:4px 10px; border-radius:100px;
+  }
+
+  /* REIMBURSEMENT TIERS */
+  .tiers{padding:100px 24px; background:var(--bg-alt); border-top:1px solid var(--card-border); border-bottom:1px solid var(--card-border);}
+  .tier-grid{
+    max-width:960px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr; gap:24px;
+  }
+  .tier-card{
+    background:var(--card);
+    border:1px solid var(--card-border);
+    border-radius:var(--radius);
+    padding:36px;
+    display:flex; flex-direction:column;
+  }
+  .tier-card.featured{
+    border-color:var(--accent);
+    background:linear-gradient(180deg, rgba(200,255,61,0.06), rgba(21,21,29,1) 40%);
+  }
+  .tier-badge{
+    font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--text-faint); margin-bottom:16px;
+  }
+  .tier-card.featured .tier-badge{color:var(--accent);}
+  .tier-rate{font-size:52px; font-weight:700; letter-spacing:-0.02em; font-family:'Space Grotesk', sans-serif; margin-bottom:6px;}
+  .tier-card.featured .tier-rate{color:var(--accent);}
+  .tier-name{font-size:17px; font-weight:600; margin-bottom:18px;}
+  .tier-desc{color:var(--text-dim); font-size:14.5px; margin-bottom:24px; flex-grow:1;}
+  .tier-list{list-style:none; display:flex; flex-direction:column; gap:10px; margin-bottom:24px;}
+  .tier-list li{font-size:14.5px; color:var(--text-dim); display:flex; gap:10px;}
+  .tier-list li::before{content:"✓"; color:var(--accent); font-weight:700;}
+  .tier-example{
+    border-top:1px solid var(--card-border);
+    padding-top:18px;
+    font-size:13.5px; color:var(--text-faint);
+  }
+  .tier-example b{color:var(--text);}
+
+  @media (max-width: 720px){
+    .tier-grid{grid-template-columns:1fr;}
+  }
+
+  /* WHY IT WORKS */
+  .why{padding:100px 24px;}
+  .why-grid{
+    max-width:1000px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  }
+  .why-card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius);
+    padding:28px;
+  }
+  .why-icon{
+    width:38px; height:38px; border-radius:10px;
+    background:rgba(200,255,61,0.1); border:1px solid rgba(200,255,61,0.25);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px; color:var(--accent); font-weight:700; font-size:16px;
+  }
+  .why-card h3{font-size:16px; font-weight:600; margin-bottom:8px;}
+  .why-card p{font-size:14.5px; color:var(--text-dim);}
+  @media (max-width: 860px){ .why-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width: 600px){ .why-grid{grid-template-columns:1fr;} }
+
+  /* TRUST STRIP */
+  .trust{
+    padding:60px 24px;
+    border-top:1px solid var(--card-border);
+    background:var(--bg-alt);
+  }
+  .trust-row{
+    max-width:960px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between; gap:32px;
+    flex-wrap:wrap;
+  }
+  .trust-item{display:flex; align-items:center; gap:12px; font-size:14px; color:var(--text-dim);}
+  .trust-item b{color:var(--text); font-weight:600;}
+
+  /* CTA FOOTER */
+  .cta-band{
+    padding:110px 24px;
+    text-align:center;
+  }
+  .cta-band h2{font-size:clamp(28px, 4.5vw, 44px); font-weight:700; letter-spacing:-0.02em; margin-bottom:20px;}
+  .cta-band p{color:var(--text-dim); max-width:520px; margin:0 auto 36px; font-size:16px;}
+
+  footer{
+    border-top:1px solid var(--card-border);
+    padding:32px 24px;
+  }
+  .footer-row{
+    max-width:1120px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    font-size:13px; color:var(--text-faint);
+    flex-wrap:wrap; gap:12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="wordmark"><span class="dot"></span>NIL CLUB</div>
+    <a class="nav-cta" href="#contact">Partner With Us</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Athlete-Powered Reviews</span>
+    <h1>Real athletes. Real purchases. <span>Reviews brands can actually trust.</span></h1>
+    <p class="sub">NIL Club connects your product with student-athletes who buy it like any real customer, review it honestly, and help it show up where shoppers are searching — all fully tracked, all fully reimbursed.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#contact">Start a Partnership</a>
+      <a class="btn-secondary" href="#process">See How It Works</a>
+    </div>
+    <div class="example-tag"><b>Example partner used throughout this page:</b>&nbsp;LG</div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">The Process</span>
+      <h2>From link to published review</h2>
+      <p>Every step is designed to look and feel like a genuine customer journey — because it is one.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Athlete gets the product link</h3>
+          <p>We send a NIL Club athlete a link to the LG product page — no shortcuts, no direct checkout link.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Search &amp; navigate like a real shopper</h3>
+          <p>The athlete searches for the product and navigates to it on lg.com as a normal customer would, generating organic-style search and browsing signal.</p>
+          <span class="step-tag">SEO benefit</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Purchase with their own money</h3>
+          <p>The athlete buys the product with their own card at checkout. The purchase is tracked end-to-end through CJ, so LG can see the exact cost of every transaction.</p>
+          <span class="step-tag">Tracked via CJ</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Product is received</h3>
+          <p>The athlete receives and uses the product just like any other customer.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Thoughtful review, real media</h3>
+          <p>The athlete writes a genuine, detailed review and includes original photo or video — no AI-generated media, ever.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h3>Review is posted</h3>
+          <p>The completed review is published to the product page.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <h3>Review approved → reimbursement</h3>
+          <p>Once LG approves the review, the athlete is reimbursed 110% of the full purchase cost, including tax — verified against the exact CJ-tracked order amount.</p>
+          <span class="step-tag">110% reimbursed</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">8</div>
+        <div class="step-body">
+          <h3>Optional: UGC + affiliate earnings</h3>
+          <p>After the review is complete, the athlete can create additional UGC about the product and share a tracked affiliate link — earning ongoing commission on any sales it drives.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tiers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Reimbursement Models</span>
+      <h2>Two ways to structure the partnership</h2>
+      <p>LG chooses the model per campaign — reward the review alone, or guarantee content alongside it.</p>
+    </div>
+
+    <div class="tier-grid">
+      <div class="tier-card">
+        <span class="tier-badge">Track A</span>
+        <div class="tier-rate">110%</div>
+        <div class="tier-name">Standard Review</div>
+        <p class="tier-desc">LG reimburses 110% of the product cost (including tax) once the review is submitted and approved. UGC is optional and, if the athlete chooses to make it, is monetized separately through a tracked affiliate link.</p>
+        <ul class="tier-list">
+          <li>Honest written review required</li>
+          <li>Original, non-AI photo/video required</li>
+          <li>UGC creation is optional, affiliate-earned</li>
+          <li>Full cost tracked and verified via CJ</li>
+        </ul>
+        <div class="tier-example"><b>$100 product</b> → athlete reimbursed <b>$110</b></div>
+      </div>
+
+      <div class="tier-card featured">
+        <span class="tier-badge">Track B · UGC Included</span>
+        <div class="tier-rate">150%</div>
+        <div class="tier-name">Review + Guaranteed UGC</div>
+        <p class="tier-desc">LG reimburses 150% of the product cost, and in exchange the athlete is required to also produce dedicated UGC content about the product — guaranteeing brand content, not just a review.</p>
+        <ul class="tier-list">
+          <li>Honest written review required</li>
+          <li>Original, non-AI photo/video required</li>
+          <li>Dedicated UGC content is required, not optional</li>
+          <li>Full cost tracked and verified via CJ</li>
+        </ul>
+        <div class="tier-example"><b>$100 product</b> → athlete reimbursed <b>$150</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-label">Why It Works</span>
+      <h2>Built for brands that want proof, not promises</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">01</div>
+        <h3>Organic search signal</h3>
+        <p>Athletes search and browse naturally before buying, supporting your product's visibility the way a real shopper journey does.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">02</div>
+        <h3>Verified real purchases</h3>
+        <p>Every order runs through CJ, so LG sees the exact cost of each transaction with no ambiguity.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">03</div>
+        <h3>Authentic, human media</h3>
+        <p>Reviews include original photo and video content — never AI-generated — from a real product experience.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">04</div>
+        <h3>Pay for approved outcomes</h3>
+        <p>Reimbursement only happens after LG reviews and approves the content, keeping quality in your control.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">05</div>
+        <h3>Built-in content upside</h3>
+        <p>Choose the 150% track to guarantee dedicated UGC alongside every review, not just an optional add-on.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">06</div>
+        <h3>Ongoing affiliate reach</h3>
+        <p>Athletes can keep promoting the product afterward through tracked affiliate links, extending reach past the initial review.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-row">
+      <div class="trust-item"><b>CJ-Tracked</b>&nbsp;every purchase &amp; conversion</div>
+      <div class="trust-item"><b>No AI Media</b>&nbsp;original photo &amp; video only</div>
+      <div class="trust-item"><b>Approval-Gated</b>&nbsp;LG reviews before reimbursement</div>
+      <div class="trust-item"><b>Real Customers</b>&nbsp;athletes buy with their own money</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <h2>Let's design your program</h2>
+    <p>Tell us which products you want covered and which reimbursement track fits — we'll handle the rest.</p>
+    <a class="btn-primary" href="mailto:hank@yoketeam.com">Talk to NIL Club</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-row">
+    <div>NIL Club</div>
+    <div>Example partner shown: LG — for illustrative purposes only</div>
+  </div>
+</footer>
+
+</body>
+</html>
