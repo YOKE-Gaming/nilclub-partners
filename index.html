@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NIL Club — Athlete-Powered Product Reviews for Brands</title>
+<title>NIL Club × LG — Program Proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -79,6 +79,13 @@
     box-shadow:0 0 0 rgba(200,255,61,0);
   }
   .nav-cta:hover{transform:translateY(-1px); box-shadow:0 6px 24px rgba(200,255,61,0.25);}
+  .nav-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; color:var(--text-dim);
+    border:1px solid var(--card-border);
+    background:rgba(255,255,255,0.02);
+    padding:8px 16px; border-radius:100px;
+  }
 
   section{position:relative; z-index:1;}
 
@@ -174,6 +181,30 @@
     background:rgba(91,140,255,0.1); border:1px solid rgba(91,140,255,0.25);
     padding:4px 10px; border-radius:100px;
   }
+
+  /* STAT BAND */
+  .stat-band{
+    padding:72px 24px;
+    background:linear-gradient(180deg, rgba(200,255,61,0.07), rgba(10,10,15,0) 60%);
+    border-top:1px solid var(--card-border);
+    border-bottom:1px solid var(--card-border);
+  }
+  .stat-inner{
+    display:flex; align-items:center; gap:48px;
+    flex-wrap:wrap;
+  }
+  .stat-number{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(64px, 10vw, 120px);
+    font-weight:700;
+    line-height:1;
+    color:var(--accent);
+    text-shadow:0 0 40px rgba(200,255,61,0.35);
+    flex:none;
+  }
+  .stat-copy{flex:1; min-width:260px;}
+  .stat-copy h3{font-size:22px; font-weight:700; margin-bottom:10px; letter-spacing:-0.01em;}
+  .stat-copy p{color:var(--text-dim); font-size:16px; max-width:560px;}
 
   /* REIMBURSEMENT TIERS */
   .tiers{padding:100px 24px; background:var(--bg-alt); border-top:1px solid var(--card-border); border-bottom:1px solid var(--card-border);}
@@ -278,21 +309,20 @@
       <img class="logo-icon" src="assets/nilclub-logo.png" alt="NIL Club logo">
       NIL CLUB
     </div>
-    <a class="nav-cta" href="#contact">Partner With Us</a>
+    <div class="nav-label">
+      <img class="brand-logo lg-logo" src="assets/lg-logo.png" alt="LG logo" style="width:18px;height:18px;">
+      Program Proposal for LG
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow">Athlete-Powered Reviews</span>
-    <h1>Real athletes. Real purchases. <span>Reviews brands can actually trust.</span></h1>
-    <p class="sub">NIL Club connects your product with student-athletes who buy it like any real customer, review it honestly, and help it show up where shoppers are searching — all fully tracked, all fully reimbursed.</p>
-    <div class="hero-ctas">
-      <a class="btn-primary" href="#contact">Start a Partnership</a>
-      <a class="btn-secondary" href="#process">See How It Works</a>
-    </div>
+    <h1>Real athletes. Real purchases. <span>Reviews LG can actually trust.</span></h1>
+    <p class="sub">NIL Club connects LG products with student-athletes who buy them like any real customer, review them honestly, and help them show up where shoppers are searching — all fully tracked, all fully reimbursed.</p>
     <div class="example-tag">
-      <b>Example partner used throughout this page:</b>
+      <b>Prepared for:</b>
       <img class="brand-logo lg-logo" src="assets/lg-logo.png" alt="LG logo" style="width:22px;height:22px;">
       LG
     </div>
@@ -303,7 +333,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="section-label">The Process</span>
-      <h2>From link to published review</h2>
+      <h2>From site visit to published review</h2>
       <p>Every step is designed to look and feel like a genuine customer journey — because it is one.</p>
     </div>
 
@@ -311,15 +341,15 @@
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3>Athlete gets the product link</h3>
-          <p>We send a NIL Club athlete a link to the LG product page — no shortcuts, no direct checkout link.</p>
+          <h3>Athlete gets access to LG.com</h3>
+          <p>The athlete is pointed to the LG website generally — not a direct link to any specific product page. There's no shortcut to the item they'll eventually buy.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
           <h3>Search &amp; navigate like a real shopper</h3>
-          <p>The athlete searches for the product and navigates to it on lg.com as a normal customer would, generating organic-style search and browsing signal.</p>
+          <p>From there, the athlete searches for the product themselves and navigates to it like any normal customer would, generating organic-style search and browsing signal along the way.</p>
           <span class="step-tag">SEO benefit</span>
         </div>
       </div>
@@ -356,7 +386,7 @@
         <div class="step-num">7</div>
         <div class="step-body">
           <h3>Review approved → reimbursement</h3>
-          <p>Once LG approves the review, the athlete is reimbursed 110% of the full purchase cost, including tax — verified against the exact CJ-tracked order amount.</p>
+          <p>Once LG approves the review, NIL Club is reimbursed 110% of the full purchase cost, including tax — verified against the exact CJ-tracked order amount.</p>
           <span class="step-tag">110% reimbursed</span>
         </div>
       </div>
@@ -367,6 +397,16 @@
           <p>After the review is complete, the athlete can create additional UGC about the product and share a tracked affiliate link — earning ongoing commission on any sales it drives.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="stat-band">
+  <div class="wrap stat-inner">
+    <div class="stat-number">~100%</div>
+    <div class="stat-copy">
+      <h3>Completion rate, by design</h3>
+      <p>Athletes purchase with their own money up front and aren't made whole until a review is submitted and approved — so finishing the job isn't a hope, it's the incentive. That's what a near-100% completion rate looks like.</p>
     </div>
   </div>
 </section>
@@ -384,28 +424,28 @@
         <span class="tier-badge">Track A</span>
         <div class="tier-rate">110%</div>
         <div class="tier-name">Standard Review</div>
-        <p class="tier-desc">LG reimburses 110% of the product cost (including tax) once the review is submitted and approved. UGC is optional and, if the athlete chooses to make it, is monetized separately through a tracked affiliate link.</p>
+        <p class="tier-desc">LG reimburses NIL Club 110% of the product cost (including tax) once the review is submitted and approved. UGC is optional and, if the athlete chooses to make it, is monetized separately through a tracked affiliate link.</p>
         <ul class="tier-list">
           <li>Honest written review required</li>
           <li>Original, non-AI photo/video required</li>
           <li>UGC creation is optional, affiliate-earned</li>
           <li>Full cost tracked and verified via CJ</li>
         </ul>
-        <div class="tier-example"><b>$100 product</b> → athlete reimbursed <b>$110</b></div>
+        <div class="tier-example"><b>$100 product</b> → <b>110%</b> ($110) reimbursed to NIL Club</div>
       </div>
 
       <div class="tier-card featured">
         <span class="tier-badge">Track B · UGC Included</span>
         <div class="tier-rate">150%</div>
         <div class="tier-name">Review + Guaranteed UGC</div>
-        <p class="tier-desc">LG reimburses 150% of the product cost, and in exchange the athlete is required to also produce dedicated UGC content about the product — guaranteeing brand content, not just a review.</p>
+        <p class="tier-desc">LG reimburses NIL Club 150% of the product cost, and in exchange the athlete is required to also produce dedicated UGC content about the product — guaranteeing brand content, not just a review.</p>
         <ul class="tier-list">
           <li>Honest written review required</li>
           <li>Original, non-AI photo/video required</li>
           <li>Dedicated UGC content is required, not optional</li>
           <li>Full cost tracked and verified via CJ</li>
         </ul>
-        <div class="tier-example"><b>$100 product</b> → athlete reimbursed <b>$150</b></div>
+        <div class="tier-example"><b>$100 product</b> → <b>150%</b> ($150) reimbursed to NIL Club</div>
       </div>
     </div>
   </div>
@@ -415,7 +455,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="section-label">Why It Works</span>
-      <h2>Built for brands that want proof, not promises</h2>
+      <h2>Why this works for LG</h2>
     </div>
     <div class="why-grid">
       <div class="why-card">
@@ -465,9 +505,8 @@
 
 <section class="cta-band" id="contact">
   <div class="wrap">
-    <h2>Let's design your program</h2>
-    <p>Tell us which products you want covered and which reimbursement track fits — we'll handle the rest.</p>
-    <a class="btn-primary" href="mailto:hank@yoketeam.com">Talk to NIL Club</a>
+    <h2>Next steps</h2>
+    <p>This is the program NIL Club is proposing for LG — pick the reimbursement track per campaign, and we'll take it from there. Questions before sign-off: hank@yoketeam.com.</p>
   </div>
 </section>
 
@@ -478,9 +517,9 @@
       NIL Club
     </div>
     <div style="display:flex;align-items:center;gap:8px;">
-      Example partner shown:
+      Prepared for
       <img class="brand-logo lg-logo" src="assets/lg-logo.png" alt="LG logo" style="width:16px;height:16px;">
-      LG — for illustrative purposes only
+      LG — confidential proposal
     </div>
   </div>
 </footer>
