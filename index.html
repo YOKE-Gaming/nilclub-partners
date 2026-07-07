@@ -58,14 +58,15 @@
   }
   .wordmark{
     font-weight:700; font-size:20px; letter-spacing:-0.02em;
-    display:flex; align-items:center; gap:8px;
+    display:flex; align-items:center; gap:10px;
   }
-  .wordmark .dot{
-    width:9px; height:9px; border-radius:50%;
-    background:var(--accent);
-    display:inline-block;
-    box-shadow:0 0 12px var(--accent);
+  .wordmark .logo-icon{
+    width:28px; height:28px; border-radius:8px; display:inline-block; flex:none;
   }
+  .brand-logo{
+    width:1em; height:1em; display:inline-block; vertical-align:-0.15em; border-radius:22%;
+  }
+  .lg-logo{ vertical-align:-0.2em; }
   .nav-cta{
     background:var(--accent);
     color:#0a0a0f;
@@ -273,7 +274,20 @@
 
 <header>
   <div class="nav wrap">
-    <div class="wordmark"><span class="dot"></span>NIL CLUB</div>
+    <div class="wordmark">
+      <svg class="logo-icon" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="NIL Club logo">
+        <rect width="200" height="200" rx="46" fill="#3B78F6"/>
+        <g transform="rotate(-18 100 100)">
+          <rect x="78" y="95" width="112" height="88" rx="40" fill="#ffffff"/>
+          <rect x="78" y="22" width="27" height="92" rx="13.5" fill="#ffffff"/>
+          <rect x="109" y="56" width="23" height="58" rx="11.5" fill="#ffffff"/>
+          <rect x="132" y="62" width="23" height="52" rx="11.5" fill="#ffffff"/>
+          <rect x="155" y="70" width="22" height="44" rx="11" fill="#ffffff"/>
+          <line x1="98" y1="142" x2="142" y2="152" stroke="#3B78F6" stroke-width="6" stroke-linecap="round"/>
+        </g>
+      </svg>
+      NIL CLUB
+    </div>
     <a class="nav-cta" href="#contact">Partner With Us</a>
   </div>
 </header>
@@ -287,7 +301,18 @@
       <a class="btn-primary" href="#contact">Start a Partnership</a>
       <a class="btn-secondary" href="#process">See How It Works</a>
     </div>
-    <div class="example-tag"><b>Example partner used throughout this page:</b>&nbsp;LG</div>
+    <div class="example-tag">
+      <b>Example partner used throughout this page:</b>
+      <svg class="brand-logo lg-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="LG logo" style="width:22px;height:22px;">
+        <circle cx="100" cy="100" r="100" fill="#C2036B"/>
+        <circle cx="100" cy="100" r="68" fill="none" stroke="#ffffff" stroke-width="15" stroke-dasharray="356 62" stroke-dashoffset="-40" transform="rotate(-98 100 100)"/>
+        <circle cx="72" cy="68" r="13" fill="#ffffff"/>
+        <path d="M108 58 h18 v82 h-18 z" fill="#ffffff"/>
+        <path d="M108 122 h44 v18 h-44 z" fill="#ffffff"/>
+        <path d="M152 104 h26 v18 h-26 z" fill="#ffffff"/>
+      </svg>
+      LG
+    </div>
   </div>
 </section>
 
@@ -465,8 +490,32 @@
 
 <footer>
   <div class="footer-row">
-    <div>NIL Club</div>
-    <div>Example partner shown: LG — for illustrative purposes only</div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg class="brand-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="NIL Club logo" style="width:18px;height:18px;">
+        <rect width="200" height="200" rx="46" fill="#3B78F6"/>
+        <g transform="rotate(-18 100 100)">
+          <rect x="78" y="95" width="112" height="88" rx="40" fill="#ffffff"/>
+          <rect x="78" y="22" width="27" height="92" rx="13.5" fill="#ffffff"/>
+          <rect x="109" y="56" width="23" height="58" rx="11.5" fill="#ffffff"/>
+          <rect x="132" y="62" width="23" height="52" rx="11.5" fill="#ffffff"/>
+          <rect x="155" y="70" width="22" height="44" rx="11" fill="#ffffff"/>
+          <line x1="98" y1="142" x2="142" y2="152" stroke="#3B78F6" stroke-width="6" stroke-linecap="round"/>
+        </g>
+      </svg>
+      NIL Club
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      Example partner shown:
+      <svg class="brand-logo lg-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="LG logo" style="width:16px;height:16px;">
+        <circle cx="100" cy="100" r="100" fill="#C2036B"/>
+        <circle cx="100" cy="100" r="68" fill="none" stroke="#ffffff" stroke-width="15" stroke-dasharray="356 62" stroke-dashoffset="-40" transform="rotate(-98 100 100)"/>
+        <circle cx="72" cy="68" r="13" fill="#ffffff"/>
+        <path d="M108 58 h18 v82 h-18 z" fill="#ffffff"/>
+        <path d="M108 122 h44 v18 h-44 z" fill="#ffffff"/>
+        <path d="M152 104 h26 v18 h-26 z" fill="#ffffff"/>
+      </svg>
+      LG — for illustrative purposes only
+    </div>
   </div>
 </footer>
 
